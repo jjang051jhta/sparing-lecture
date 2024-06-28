@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1 th:text="${name}">hello spring</h1>
+    <h2>내용을 직접 뿌리기[[${data}]]</h2>
+    <p th:utext="${data02}">hello</p>
+    <p>내용을 직접 뿌리기[(${data02})]</p>
+    <!--    utext는 unescape처리 해준다.-->
+</body>
+</html>

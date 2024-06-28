@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <dl>
+        <dt th:text="${member.name}">장동건</dt>
+        <dd th:text="${member.age}">40</dd>
+    </dl>
+    <dl>
+        <dt th:text="${member['name']}">장동건</dt>
+        <dd th:text="${member['age']}">40</dd>
+    </dl>
+    <hr>
+    <ul>
+        <li>
+            <h2 th:text="${memberList[0].name}">아무개</h2>
+            <h2 th:text="${memberList[0].age}">20</h2>
+        </li>
+        <li>
+            <h2 th:text="${memberList[1].name}">아무개</h2>
+            <h2 th:text="${memberList[1].age}">20</h2>
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <li>
+            <h2 th:text="${map['member01'].name}">아무개</h2>
+            <h2 th:text="${map['member01'].age}">20</h2>
+        </li>
+        <li>
+            <h2 th:text="${map['member02'].name}">아무개</h2>
+            <h2 th:text="${map['member02'].age}">20</h2>
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <li><a th:href="@{/test}">링크</a> </li>
+    </ul>
+
+
+</body>
+</html>
