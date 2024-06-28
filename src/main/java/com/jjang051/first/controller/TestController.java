@@ -2,6 +2,9 @@ package com.jjang051.first.controller;
 
 import com.jjang051.first.dto.Member;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@Slf4j
 public class TestController {
-    //spring container에 bean으로 등록
+
+    //private final Logger log = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/user")
     @ResponseBody
@@ -34,14 +39,28 @@ public class TestController {
         model.addAttribute("data02","<strong>hello</strong>");
         return "html/test";
     }
-    @GetMapping("/test")
+    //@GetMapping("/test")
     public String testControllerRequestParam(
                                  Model model,
                                  @RequestParam("username") String username,
                                  @RequestParam("age") int age) {
         int myAge = age+20;
-        System.out.println("username = " + username + ", age = " + myAge);
+        log.info("username={},age={}",username,age);
         model.addAttribute("name","jjang051");
+        model.addAttribute("data","spring fighting");
+        model.addAttribute("data02","<strong>hello</strong>");
+        return "html/test";
+    }
+
+    @GetMapping("/test")
+    public String testControllerRequestParam02(
+            Model model,
+            @RequestParam String username,
+            @RequestParam(defaultValue = "10") Integer age) {
+        //required= false 쓰면 데이터 없을때 null 떨어짐...
+        //int myAge = age+20;
+        log.info("username={},age={}",username,age);
+        model.addAttribute("name",username);
         model.addAttribute("data","spring fighting");
         model.addAttribute("data02","<strong>hello</strong>");
         return "html/test";
